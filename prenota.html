@@ -6,6 +6,7 @@
   <title>Prenota - Studio Medico Paolo Farulo</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript"></script>
 </head>
 <body>
   <header class="header">
@@ -35,14 +36,12 @@
         <div id="booking-form-container">
           <h1 class="page-title">Prenota una Visita</h1>
           <p class="section-description">
-            Compila il modulo sottostante per prenotare una visita presso il nostro studio. Ti contatteremo per confermare
-            la tua prenotazione.
+            Compila il modulo sottostante per prenotare una visita presso il nostro studio.
           </p>
 
           <form id="booking-form" class="booking-form">
             <div class="form-section">
               <h2 class="form-section-title">Informazioni Personali</h2>
-              
               <div class="form-grid">
                 <div class="form-group">
                   <label for="name" class="form-label">Nome e Cognome *</label>
@@ -51,7 +50,6 @@
                     <input type="text" id="name" name="name" required class="form-input" placeholder="Mario Rossi">
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="email" class="form-label">Email *</label>
                   <div class="input-icon-wrapper">
@@ -59,7 +57,6 @@
                     <input type="email" id="email" name="email" required class="form-input" placeholder="esempio@email.com">
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="phone" class="form-label">Telefono *</label>
                   <div class="input-icon-wrapper">
@@ -67,92 +64,28 @@
                     <input type="tel" id="phone" name="phone" required class="form-input" placeholder="123 456 7890">
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="service" class="form-label">Tipo di Visita *</label>
                   <select id="service" name="service" required class="form-select">
                     <option value="" disabled selected>Seleziona un servizio</option>
                     <option value="rinnovo-patente">Rinnovo Patente</option>
-                    <option value="primo-conseguimento">Primo Conseguimento Patente</option>
+                    <option value="primo-conseguimento">Primo Conseguimento</option>
                     <option value="porto-armi">Porto d'Armi</option>
                     <option value="patente-nautica">Patente Nautica</option>
-                    <option value="tempi-reazione">Test Tempi di Reazione</option>
+                    <option value="tempi-reazione">Tempi di Reazione</option>
                     <option value="altro">Altra Certificazione</option>
                   </select>
                 </div>
               </div>
             </div>
-
-            <div class="form-section">
-              <h2 class="form-section-title">Data e Ora</h2>
-              
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="date" class="form-label">Data Preferita *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">📅</span>
-                    <input type="date" id="date" name="date" required class="form-input">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="time" class="form-label">Orario Preferito *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">🕒</span>
-                    <select id="time" name="time" required class="form-select">
-                      <option value="" disabled selected>Seleziona un orario</option>
-                      <option value="09:00">09:00</option>
-                      <option value="09:30">09:30</option>
-                      <option value="10:00">10:00</option>
-                      <option value="10:30">10:30</option>
-                      <option value="11:00">11:00</option>
-                      <option value="11:30">11:30</option>
-                      <option value="17:00">17:00</option>
-                      <option value="17:30">17:30</option>
-                      <option value="18:00">18:00</option>
-                      <option value="18:30">18:30</option>
-                      <option value="19:00">19:00</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group full-width">
-              <label for="notes" class="form-label">Note Aggiuntive</label>
-              <div class="input-icon-wrapper">
-                <span class="input-icon">📝</span>
-                <textarea id="notes" name="notes" rows="4" class="form-textarea" placeholder="Inserisci eventuali note o richieste particolari..."></textarea>
-              </div>
-            </div>
-
-            <div class="form-note">
-              <p>
-                <strong>Nota:</strong> Riceverai una conferma della tua prenotazione via email. In caso di necessità,
-                potrai modificare o annullare la prenotazione contattandoci telefonicamente al numero 0461 810712.
-              </p>
-            </div>
-
             <div class="form-submit">
-              <button type="submit" class="btn btn-primary btn-large">Conferma Prenotazione</button>
+              <button type="button" id="to-calendly" class="btn btn-primary btn-large">Scegli Data e Ora</button>
             </div>
           </form>
         </div>
 
-        <div id="booking-confirmation" class="booking-confirmation" style="display: none;">
-          <div class="confirmation-box">
-            <h2 class="confirmation-title">Prenotazione Confermata!</h2>
-            <p>Grazie per aver prenotato una visita presso il nostro studio.</p>
-          </div>
-          <p class="confirmation-text">
-            Abbiamo inviato una email di conferma a <strong id="confirm-email"></strong> con tutti i dettagli della tua
-            prenotazione.
-          </p>
-          <p class="confirmation-text">
-            Ti aspettiamo il giorno <strong id="confirm-date"></strong> alle ore <strong id="confirm-time"></strong> presso
-            il nostro studio in Via Madonna della Corona 1A, Trento.
-          </p>
-          <button id="new-booking-btn" class="btn btn-outline">Torna al modulo di prenotazione</button>
+        <div id="calendly-container" style="display:none; margin-top: 40px;">
+          <div class="calendly-inline-widget" data-url="https://calendly.com/paolofarulo/prenota-ora-la-tua-visita" style="min-width:320px;height:700px;"></div>
         </div>
       </div>
     </section>
@@ -164,351 +97,25 @@
         <div class="footer-col">
           <h3 class="footer-title">Studio Medico Farulo Paolo</h3>
           <p class="footer-text">Servizi professionali per il rinnovo patente e certificati medici.</p>
-          <a href="https://www.example.com" class="footer-link">Visita il sito ufficiale</a>
         </div>
-
         <div class="footer-col">
           <h3 class="footer-title">Contatti</h3>
-          <address class="footer-address">
-            <div class="contact-item">
-              <span class="contact-icon">📍</span>
-              <div>
-                <p>Via Madonna della Corona 1A</p>
-                <p>38123 Trento, Italia</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📞</span>
-              <p>Tel: 0461 810712</p>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">✉️</span>
-              <p>Email: paolofarulo@gmail.com</p>
-            </div>
-          </address>
+          <p><span class="contact-icon">📞</span> 0461 810712</p>
+          <p><span class="contact-icon">✉️</span> paolofarulo@gmail.com</p>
         </div>
-
         <div class="footer-col">
           <h3 class="footer-title">Orari</h3>
-          <div class="hours">
-            <div class="hours-row">
-              <span>Lunedì - Giovedì:</span>
-              <span>9:00 - 12:00</span>
-            </div>
-            <div class="hours-row">
-              <span>Venerdì:</span>
-              <span>9:00 - 12:00, 17:00 - 19:30</span>
-            </div>
-            <div class="hours-row">
-              <span>Sabato e Domenica:</span>
-              <span>Chiuso</span>
-            </div>
-          </div>
-          <div class="mt-16">
-            <a href="prenota.html" class="footer-link">Prenota una visita</a>
-          </div>
+          <p>Lun–Gio: 9–12<br>Ven: 9–12 / 17–19:30<br>Sab–Dom: Chiuso</p>
         </div>
       </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 Studio Medico Farulo Paolo. Tutti i diritti riservati.</p>
-        <div class="footer-links">
-          <a href="index.html" class="footer-bottom-link">Home</a>
-          <a href="servizi.html" class="footer-bottom-link">Servizi</a>
-          <a href="faq.html" class="footer-bottom-link">FAQ</a>
-          <a href="contatti.html" class="footer-bottom-link">Contatti</a>
-        </div>
-      </div>
+        <p style="text-align:center; margin-top:20px;">© 2025 Studio Medico Farulo Paolo</p>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('booking-form');
-      const formContainer = document.getElementById('booking-form-container');
-      const confirmationContainer = document.getElementById('booking
-
-Let me provide the remaining files to complete the pure HTML website:
-
-```html file="prenota.html" isFixed
-&lt;!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prenota - Studio Medico Paolo Farulo</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <header class="header">
-    <div class="container">
-      <div class="header-content">
-        <a href="index.html" class="logo">Studio Medico Paolo Farulo</a>
-        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
-          <span class="menu-icon"></span>
-        </button>
-        <nav id="main-nav" class="main-nav">
-          <ul class="nav-list">
-            <li><a href="index.html" class="nav-link">Home</a></li>
-            <li><a href="servizi.html" class="nav-link">Servizi</a></li>
-            <li><a href="come-funziona.html" class="nav-link">Come Funziona</a></li>
-            <li><a href="faq.html" class="nav-link">FAQ</a></li>
-            <li><a href="contatti.html" class="nav-link">Contatti</a></li>
-            <li><a href="prenota.html" class="nav-link active btn btn-primary">Prenota Ora</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="page-section">
-      <div class="container">
-        <div id="booking-form-container">
-          <h1 class="page-title">Prenota una Visita</h1>
-          <p class="section-description">
-            Compila il modulo sottostante per prenotare una visita presso il nostro studio. Ti contatteremo per confermare
-            la tua prenotazione.
-          </p>
-
-          <form id="booking-form" class="booking-form">
-            <div class="form-section">
-              <h2 class="form-section-title">Informazioni Personali</h2>
-              
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="name" class="form-label">Nome e Cognome *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">👤</span>
-                    <input type="text" id="name" name="name" required class="form-input" placeholder="Mario Rossi">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="email" class="form-label">Email *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">✉️</span>
-                    <input type="email" id="email" name="email" required class="form-input" placeholder="esempio@email.com">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="phone" class="form-label">Telefono *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">📞</span>
-                    <input type="tel" id="phone" name="phone" required class="form-input" placeholder="123 456 7890">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="service" class="form-label">Tipo di Visita *</label>
-                  <select id="service" name="service" required class="form-select">
-                    <option value="" disabled selected>Seleziona un servizio</option>
-                    <option value="rinnovo-patente">Rinnovo Patente</option>
-                    <option value="primo-conseguimento">Primo Conseguimento Patente</option>
-                    <option value="porto-armi">Porto d'Armi</option>
-                    <option value="patente-nautica">Patente Nautica</option>
-                    <option value="tempi-reazione">Test Tempi di Reazione</option>
-                    <option value="altro">Altra Certificazione</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h2 class="form-section-title">Data e Ora</h2>
-              
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="date" class="form-label">Data Preferita *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">📅</span>
-                    <input type="date" id="date" name="date" required class="form-input">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="time" class="form-label">Orario Preferito *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">🕒</span>
-                    <select id="time" name="time" required class="form-select">
-                      <option value="" disabled selected>Seleziona un orario</option>
-                      <option value="09:00">09:00</option>
-                      <option value="09:30">09:30</option>
-                      <option value="10:00">10:00</option>
-                      <option value="10:30">10:30</option>
-                      <option value="11:00">11:00</option>
-                      <option value="11:30">11:30</option>
-                      <option value="17:00">17:00</option>
-                      <option value="17:30">17:30</option>
-                      <option value="18:00">18:00</option>
-                      <option value="18:30">18:30</option>
-                      <option value="19:00">19:00</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group full-width">
-              <label for="notes" class="form-label">Note Aggiuntive</label>
-              <div class="input-icon-wrapper">
-                <span class="input-icon">📝</span>
-                <textarea id="notes" name="notes" rows="4" class="form-textarea" placeholder="Inserisci eventuali note o richieste particolari..."></textarea>
-              </div>
-            </div>
-
-            <div class="form-note">
-              <p>
-                <strong>Nota:</strong> Riceverai una conferma della tua prenotazione via email. In caso di necessità,
-                potrai modificare o annullare la prenotazione contattandoci telefonicamente al numero 0461 810712.
-              </p>
-            </div>
-
-            <div class="form-submit">
-              <button type="submit" class="btn btn-primary btn-large">Conferma Prenotazione</button>
-            </div>
-          </form>
-        </div>
-
-        <div id="booking-confirmation" class="booking-confirmation" style="display: none;">
-          <div class="confirmation-box">
-            <h2 class="confirmation-title">Prenotazione Confermata!</h2>
-            <p>Grazie per aver prenotato una visita presso il nostro studio.</p>
-          </div>
-          <p class="confirmation-text">
-            Abbiamo inviato una email di conferma a <strong id="confirm-email"></strong> con tutti i dettagli della tua
-            prenotazione.
-          </p>
-          <p class="confirmation-text">
-            Ti aspettiamo il giorno <strong id="confirm-date"></strong> alle ore <strong id="confirm-time"></strong> presso
-            il nostro studio in Via Madonna della Corona 1A, Trento.
-          </p>
-          <button id="new-booking-btn" class="btn btn-outline">Torna al modulo di prenotazione</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h3 class="footer-title">Studio Medico Farulo Paolo</h3>
-          <p class="footer-text">Servizi professionali per il rinnovo patente e certificati medici.</p>
-          <a href="https://www.example.com" class="footer-link">Visita il sito ufficiale</a>
-        </div>
-
-        <div class="footer-col">
-          <h3 class="footer-title">Contatti</h3>
-          <address class="footer-address">
-            <div class="contact-item">
-              <span class="contact-icon">📍</span>
-              <div>
-                <p>Via Madonna della Corona 1A</p>
-                <p>38123 Trento, Italia</p>
-              </div>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">📞</span>
-              <p>Tel: 0461 810712</p>
-            </div>
-            <div class="contact-item">
-              <span class="contact-icon">✉️</span>
-              <p>Email: paolofarulo@gmail.com</p>
-            </div>
-          </address>
-        </div>
-
-        <div class="footer-col">
-          <h3 class="footer-title">Orari</h3>
-          <div class="hours">
-            <div class="hours-row">
-              <span>Lunedì - Giovedì:</span>
-              <span>9:00 - 12:00</span>
-            </div>
-            <div class="hours-row">
-              <span>Venerdì:</span>
-              <span>9:00 - 12:00, 17:00 - 19:30</span>
-            </div>
-            <div class="hours-row">
-              <span>Sabato e Domenica:</span>
-              <span>Chiuso</span>
-            </div>
-          </div>
-          <div class="mt-16">
-            <a href="prenota.html" class="footer-link">Prenota una visita</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© 2025 Studio Medico Farulo Paolo. Tutti i diritti riservati.</p>
-        <div class="footer-links">
-          <a href="index.html" class="footer-bottom-link">Home</a>
-          <a href="servizi.html" class="footer-bottom-link">Servizi</a>
-          <a href="faq.html" class="footer-bottom-link">FAQ</a>
-          <a href="contatti.html" class="footer-bottom-link">Contatti</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script src="scripts.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const form = document.getElementById('booking-form');
-      const formContainer = document.getElementById('booking-form-container');
-      const confirmationContainer = document.getElementById('booking-confirmation');
-      const confirmEmail = document.getElementById('confirm-email');
-      const confirmDate = document.getElementById('confirm-date');
-      const confirmTime = document.getElementById('confirm-time');
-      const newBookingBtn = document.getElementById('new-booking-btn');
-      
-      // Check if there's a service parameter in the URL
-      const urlParams = new URLSearchParams(window.location.search);
-      const serviceParam = urlParams.get('service');
-      
-      if (serviceParam) {
-        const serviceSelect = document.getElementById('service');
-        for (let i = 0; i &lt; serviceSelect.options.length; i++) {
-          if (serviceSelect.options[i].value === serviceParam) {
-            serviceSelect.selectedIndex = i;
-            break;
-          }
-        }
-      }
-      
-      // Set minimum date to today
-      const dateInput = document.getElementById('date');
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      const mm = String(today.getMonth() + 1).padStart(2, '0');
-      const dd = String(today.getDate()).padStart(2, '0');
-      dateInput.min = `${yyyy}-${mm}-${dd}`;
-      
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // In a real application, you would send this data to your backend
-        const formData = new FormData(form);
-        
-        // Display confirmation
-        confirmEmail.textContent = formData.get('email');
-        confirmDate.textContent = formData.get('date');
-        confirmTime.textContent = formData.get('time');
-        
-        formContainer.style.display = 'none';
-        confirmationContainer.style.display = 'block';
-      });
-      
-      newBookingBtn.addEventListener('click', function() {
-        formContainer.style.display = 'block';
-        confirmationContainer.style.display = 'none';
-        form.reset();
-      });
+    document.getElementById('to-calendly').addEventListener('click', function() {
+      document.getElementById('booking-form-container').style.display = 'none';
+      document.getElementById('calendly-container').style.display = 'block';
     });
   </script>
 </body>
