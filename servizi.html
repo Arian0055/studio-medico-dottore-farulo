@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servizi - Studio Medico Paolo Farulo</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <a href="index.html" class="logo">Studio Medico Paolo Farulo</a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+          <span class="menu-icon"></span>
+        </button>
+        <nav id="main-nav" class="main-nav">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="servizi.html" class="nav-link active">Servizi</a></li>
+            <li><a href="come-funziona.html" class="nav-link">Come Funziona</a></li>
+            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+            <li><a href="contatti.html" class="nav-link">Contatti</a></li>
+            <li><a href="prenota.html" class="btn btn-primary">Prenota Ora</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-section">
+      <div class="container">
+        <h1 class="page-title">I Nostri Servizi</h1>
+        <p class="section-description">
+          Offriamo servizi specialistici per il rilascio e rinnovo di certificazioni mediche, con particolare attenzione
+          alle patenti di guida.
+        </p>
+
+        <div class="services-grid">
+          <div class="service-card" id="rinnovo-patenti">
+            <div class="service-image">
+              <img src="images/rinnovo-patente.jpg" alt="Rinnovo Patenti">
+            </div>
+            <div class="service-content">
+              <h3>Rinnovo Patenti</h3>
+              <p>
+                Visita medica completa per il rinnovo di patenti A, B, C, D, E. Procedura rapida e senza stress per ottenere il certificato di idoneità.
+              </p>
+              <a href="prenota.html?service=rinnovo-patenti" class="btn btn-primary">Prenota</a>
+            </div>
+          </div>
+
+          <div class="service-card" id="porto-armi">
+            <div class="service-image">
+              <img src="images/porto-armi.jpg" alt="Porto d'Armi">
+            </div>
+            <div class="service-content">
+              <h3>Porto d'Armi</h3>
+              <p>
+                Certificazione medica per i soli rilasci o rinnovi di detenzione porto d'armi, non per uso sportivo o per difesa personale (in questo caso rivolgersi alla ASL di residenza).
+              </p>
+              <a href="prenota.html?service=porto-armi" class="btn btn-primary">Prenota</a>
+            </div>
+          </div>
+
+          <div class="service-card" id="primo-conseguimento">
+            <div class="service-image">
+              <img src="images/primo-conseguimento.jpg" alt="Primo Conseguimento">
+            </div>
+            <div class="service-content">
+              <h3>Primo Conseguimento</h3>
+              <p>
+                Visita medica per chi deve conseguire la patente per la prima volta. Certificazione valida per l'iscrizione alla scuola guida.
+              </p>
+              <a href="prenota.html?service=primo-conseguimento" class="btn btn-primary">Prenota</a>
+            </div>
+          </div>
+
+          <div class="service-card" id="tempi-reazione">
+            <div class="service-image">
+              <img src="images/tempi-reazione.jpg" alt="Tempi di Reazione">
+            </div>
+            <div class="service-content">
+              <h3>Tempi di Reazione</h3>
+              <p>
+                Test specialistico per la misurazione dei tempi di reazione, richiesto in specifici casi per il rilascio dell'idoneità alla guida.
+              </p>
+              <a href="prenota.html?service=tempi-reazione" class="btn btn-primary">Prenota</a>
+            </div>
+          </div>
+
+          <div class="service-card" id="altre-certificazioni">
+            <div class="service-image">
+              <img src="images/altre-certificazioni.jpg" alt="Altre Certificazioni">
+            </div>
+            <div class="service-content">
+              <h3>Altre Certificazioni</h3>
+              <p>
+                Certificati medici per varie necessità: sportivi, lavorativi e altre certificazioni specialistiche.
+              </p>
+              <a href="#" class="btn btn-outline">Vai al sito</a>
+            </div>
+          </div>
+
+          <div class="service-card" id="prenota-online">
+            <div class="service-image">
+              <img src="images/prenota-online.jpg" alt="Prenota Online">
+            </div>
+            <div class="service-content">
+              <h3>Prenota Online</h3>
+              <p>
+                Prenota comodamente online la tua visita medica. Procedura semplice e veloce per fissare un appuntamento.
+              </p>
+              <a href="prenota.html" class="btn btn-primary">Prenota Ora</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box mt-64">
+          <h2>Hai bisogno di un servizio specifico?</h2>
+          <p>
+            Se hai bisogno di un servizio non elencato o hai domande specifiche, non esitare a contattarci. Siamo qui
+            per aiutarti con tutte le tue esigenze di certificazione medica.
+          </p>
+          <a href="contatti.html" class="btn btn-primary">Contattaci</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3 class="footer-title">Studio Medico Farulo Paolo</h3>
+          <p class="footer-text">Servizi professionali per il rinnovo patente e certificati medici.</p>
+          <a href="https://www.example.com" class="footer-link">Visita il sito ufficiale</a>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Contatti</h3>
+          <address class="footer-address">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <p>Via Madonna della Corona 1A</p>
+                <p>38123 Trento, Italia</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📞</span>
+              <p>Tel: 0461 810712</p>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">✉️</span>
+              <p>Email: paolofarulo@gmail.com</p>
+            </div>
+          </address>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-title">Orari</h3>
+          <div class="hours">
+            <div class="hours-row">
+              <span>Lunedì - Giovedì:</span>
+              <span>9:00 - 12:00</span>
+            </div>
+            <div class="hours-row">
+              <span>Venerdì:</span>
+              <span>9:00 - 12:00, 17:00 - 19:30</span>
+            </div>
+            <div class="hours-row">
+              <span>Sabato e Domenica:</span>
+              <span>Chiuso</span>
+            </div>
+          </div>
+          <div class="mt-16">
+            <a href="prenota.html" class="footer-link">Prenota una visita</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Studio Medico Farulo Paolo. Tutti i diritti riservati.</p>
+        <div class="footer-links">
+          <a href="index.html" class="footer-bottom-link">Home</a>
+          <a href="servizi.html" class="footer-bottom-link">Servizi</a>
+          <a href="faq.html" class="footer-bottom-link">FAQ</a>
+          <a href="contatti.html" class="footer-bottom-link">Contatti</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
