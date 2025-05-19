@@ -33,55 +33,21 @@
   <main>
     <section class="page-section">
       <div class="container">
-        <div id="booking-form-container">
-          <h1 class="page-title">Prenota una Visita</h1>
-          <p class="section-description">
-            Compila il modulo sottostante per prenotare una visita presso il nostro studio.
-          </p>
+        <h1 class="page-title">Prenota una Visita</h1>
+        <p class="section-description">Seleziona il tipo di visita per procedere con la prenotazione.</p>
 
-          <form id="booking-form" class="booking-form">
-            <div class="form-section">
-              <h2 class="form-section-title">Informazioni Personali</h2>
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="name" class="form-label">Nome e Cognome *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">👤</span>
-                    <input type="text" id="name" name="name" required class="form-input" placeholder="Mario Rossi">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="email" class="form-label">Email *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">✉️</span>
-                    <input type="email" id="email" name="email" required class="form-input" placeholder="esempio@email.com">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="phone" class="form-label">Telefono *</label>
-                  <div class="input-icon-wrapper">
-                    <span class="input-icon">📞</span>
-                    <input type="tel" id="phone" name="phone" required class="form-input" placeholder="123 456 7890">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="service" class="form-label">Tipo di Visita *</label>
-                  <select id="service" name="service" required class="form-select">
-                    <option value="" disabled selected>Seleziona un servizio</option>
-                    <option value="rinnovo-patente">Rinnovo Patente</option>
-                    <option value="primo-conseguimento">Primo Conseguimento</option>
-                    <option value="porto-armi">Porto d'Armi</option>
-                    <option value="patente-nautica">Patente Nautica</option>
-                    <option value="tempi-reazione">Tempi di Reazione</option>
-                    <option value="altro">Altra Certificazione</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="form-submit">
-              <button type="button" id="to-calendly" class="btn btn-primary btn-large">Scegli Data e Ora</button>
-            </div>
-          </form>
+        <div id="selection-container" class="selection-container">
+          <select id="service-select" class="form-select">
+            <option value="" disabled selected>-- Seleziona il tipo di visita --</option>
+            <option value="derm-prima">Prima visita dermatologica</option>
+            <option value="calendly">Controllo dermatologico</option>
+            <option value="calendly">Rinnovo/Conseguimento Patente</option>
+            <option value="calendly">Porto d'Armi</option>
+            <option value="calendly">Patente Nautica</option>
+            <option value="calendly">Tempi di Reazione</option>
+            <option value="calendly">Idoneità P.A.</option>
+            <option value="calendly">Altra Certificazione</option>
+          </select>
         </div>
 
         <div id="calendly-container" style="display:none; margin-top: 40px;">
@@ -108,14 +74,19 @@
           <p>Lun–Gio: 9–12<br>Ven: 9–12 / 17–19:30<br>Sab–Dom: Chiuso</p>
         </div>
       </div>
-        <p style="text-align:center; margin-top:20px;">© 2025 Studio Medico Farulo Paolo</p>
+      <p style="text-align:center; margin-top:20px;">© 2025 Studio Medico Farulo Paolo</p>
     </div>
   </footer>
 
   <script>
-    document.getElementById('to-calendly').addEventListener('click', function() {
-      document.getElementById('booking-form-container').style.display = 'none';
-      document.getElementById('calendly-container').style.display = 'block';
+    document.getElementById('service-select').addEventListener('change', function() {
+      var val = this.value;
+      if (val === 'derm-prima') {
+        window.location.href = 'https://www.studiomedicofarulopaolo.com/servizi/dermatologia/prenotazioni';
+      } else if (val === 'calendly') {
+        document.getElementById('selection-container').style.display = 'none';
+        document.getElementById('calendly-container').style.display = 'block';
+      }
     });
   </script>
 </body>
